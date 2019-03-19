@@ -1,0 +1,29 @@
+body {
+  padding: 50px;
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('https://onlinesites.com.br/imagens/95/chatbot-para-iniciantes-tudo-o-que-voce-precisa-saber_1932018105790.jpg');
+  background-repeat: no-repeat;
+  background-size:auto;
+  background-position: right;
+  background-attachment: fixed;
+  background-color: #4B89DC;
+}
+
+a {
+  color: #00B7FF;
+}
+
+p{
+  font: 30px;
+  text-align: left;
+}
+
+input{
+  border: 1px solid #ffffff;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 20px; 
+  background-color: aqua;
+  width: 150px;
+  height: 50px;
+}
