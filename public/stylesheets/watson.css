@@ -19,9 +19,9 @@ body {
     border-radius: 15px;
   }
   
-  #chatborder {
+  #chatborder { 
+    font-weight: bold;
     border-style: solid;
-    background-color: #DBDBDC;
     border-width: 3px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -32,7 +32,9 @@ body {
     padding-right: 20px;
     padding-left: 15px;
     border-radius: 15px;
-    
+    background-image: url("../images/logoPUC.png");
+    background-repeat: no-repeat; 
+    background-position: center;
 }
   
   #chatbox {
