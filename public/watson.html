@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Chatbot PUC-Campinas</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/watson.css">
+    <script>
+        // variável para controlar o contexto do diálogo
+        var context = '{}';
+        function enviarMensagem() {
+            // recupera mensagem digitada pelo usuário e exibe na tela
+            var texto = document.chatForm.texto.value;
+            chat = document.getElementById('chat');
+            chat.innerHTML += texto + "<br>" + "<br>";
+            // cria objeto para envio para a API
+            var input = {
+                text: texto,
+                context
+            };
+            // post para o serviço criado
+            $.ajax({
+                url: 'watsonAssistant',
+                type: 'post',
+                data: input,
+                // tratamento de erro do post
+                error: function (dados) {
+                    alert('Erro: ' + dados.data);
+                },
+                // tratamento de sucesso de processamento do post
+                success: function (dados) {
+                    // se ocorreu algum erro no processamento da API
+                    if (dados.status === 'ERRO')
+                        alert('Erro: ' + dados.data);
+                    // caso os dados tenham retornado com sucesso
+                    else{
+                        // exibe retorno da API e recupera o contexto para o próximo diálogo
+                        chat.innerHTML += dados.data.output.text + "<br>" + "<br>";
+                        context = JSON.stringify(dados.data.context);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id='bodybox'>
+        <h1>Chatbot PUC-Campinas</h1>
+        <div id='chatborder' style="width: 575px; height: 333px; overflow-y: auto;">
+            <div id="chat"></div>
+        </div>
+        <form name="chatForm" method="post"> 
+            <input type="text" name="texto" id="chatbox" placeholder=" Digite algo..." onfocus="placeHolder()"/>
+            <input type="button" class="button" onClick="enviarMensagem();" value="Enviar">
+        </form>
+    </div>
+</body>
+
+</html>
